@@ -60,7 +60,7 @@ const Contact = () => {
       initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0 }}
-      className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12 bg-slate-50 dark:bg-darkBg text-left"
+      className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12 space-y-12 bg-slate-50 dark:bg-darkBg text-left"
     >
       {/* Title */}
       <div className="text-center space-y-2">

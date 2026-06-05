@@ -7,7 +7,6 @@ import { AuthProvider } from './context/AuthContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollProgress from './components/ScrollProgress';
-import ScrollToTop from './components/ScrollToTop';
 import ProtectedRoute from './components/ProtectedRoute';
 
 // Pages
@@ -75,9 +74,6 @@ function App() {
 
             {/* Footer Panel */}
             <Footer />
-
-            {/* Quick Scroll-To-Top Button */}
-            <ScrollToTop />
           </div>
         </Router>
       </AuthProvider>
