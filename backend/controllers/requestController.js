@@ -42,17 +42,17 @@ const createRequest = async (req, res, next) => {
       additionalNotes
     });
 
-    // Send confirmation email to client
+    // Send confirmation email to client (run in background)
     const clientHtml = getClientConfirmationTemplate(fullName, projectTitle);
-    await sendEmail({
+    sendEmail({
       to: email,
       subject: `Project Proposal Received: ${projectTitle}`,
       html: clientHtml
     });
 
-    // Send notification email to admin
+    // Send notification email to admin (run in background)
     const adminHtml = getAdminNotificationTemplate(request);
-    await sendEmail({
+    sendEmail({
       to: process.env.ADMIN_EMAIL || 'admin@example.com',
       subject: `[ALERT] New Project Request: ${projectTitle} from ${fullName}`,
       html: adminHtml
@@ -187,9 +187,9 @@ const updateRequestStatus = async (req, res, next) => {
 
     await request.save();
 
-    // Send email update to client
+    // Send email update to client (run in background)
     const emailHtml = getClientUpdateTemplate(request, true, note || null);
-    await sendEmail({
+    sendEmail({
       to: request.email,
       subject: `Project Update: ${request.projectTitle} is now "${status}"`,
       html: emailHtml
@@ -239,9 +239,9 @@ const addRequestNote = async (req, res, next) => {
 
     await request.save();
 
-    // Send email notification to client containing the developer's message
+    // Send email notification to client containing the developer's message (run in background)
     const emailHtml = getClientUpdateTemplate(request, false, note);
-    await sendEmail({
+    sendEmail({
       to: request.email,
       subject: `New Message: Update on project "${request.projectTitle}"`,
       html: emailHtml
@@ -269,17 +269,17 @@ const submitContactForm = async (req, res, next) => {
       throw new Error('Please fill in all fields');
     }
 
-    // Send email to admin
+    // Send email to admin (run in background)
     const adminHtml = getContactAdminTemplate(name, email, subject, message);
-    await sendEmail({
+    sendEmail({
       to: process.env.ADMIN_EMAIL || 'admin@example.com',
       subject: `[CONTACT MESSAGE] ${subject} (from ${name})`,
       html: adminHtml
     });
 
-    // Send confirmation email to client
+    // Send confirmation email to client (run in background)
     const clientHtml = getContactClientTemplate(name, subject);
-    await sendEmail({
+    sendEmail({
       to: email,
       subject: `Message Receipt Confirmation: ${subject}`,
       html: clientHtml
