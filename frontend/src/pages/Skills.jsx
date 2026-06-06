@@ -94,12 +94,8 @@ const Skills = () => {
       initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0 }}
-      className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16 bg-slate-50 dark:bg-darkBg relative overflow-hidden"
+      className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12 space-y-16 bg-slate-50 dark:bg-darkBg relative overflow-hidden"
     >
-      {/* Background Blobs for SaaS Aesthetic */}
-      <div className="absolute -z-10 w-96 h-96 rounded-full bg-primary-500/5 blur-3xl opacity-60 -top-12 -left-12 pointer-events-none" />
-      <div className="absolute -z-10 w-96 h-96 rounded-full bg-accent-500/5 blur-3xl opacity-60 bottom-0 -right-12 pointer-events-none" />
-
       {/* Header Section */}
       <div className="text-center space-y-3 max-w-2xl mx-auto">
         <h2 className="text-4xl sm:text-5xl font-display font-extrabold text-slate-900 dark:text-white tracking-tight">
@@ -215,6 +211,10 @@ const Skills = () => {
           </div>
         </div>
       </motion.div>
+
+      {/* Background Blobs for SaaS Aesthetic */}
+      <div className="absolute -z-10 w-96 h-96 rounded-full bg-primary-500/5 blur-3xl opacity-60 -top-12 -left-12 pointer-events-none" />
+      <div className="absolute -z-10 w-96 h-96 rounded-full bg-accent-500/5 blur-3xl opacity-60 bottom-0 -right-12 pointer-events-none" />
     </motion.div>
   );
 };

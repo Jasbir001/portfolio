@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { experience } from '../data/experience';
-import { Briefcase, Calendar, MapPin, Award, CheckCircle } from 'lucide-react';
+import { Briefcase, Calendar, MapPin, Award, CheckCircle, ExternalLink } from 'lucide-react';
 
 const Experience = () => {
   return (
@@ -41,7 +41,19 @@ const Experience = () => {
                     {item.role}
                   </h3>
                   <p className="text-sm font-semibold text-primary-600 dark:text-primary-400">
-                    {item.company}
+                    {item.companyUrl ? (
+                      <a 
+                        href={item.companyUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="hover:underline inline-flex items-center gap-1"
+                      >
+                        <span>{item.company}</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
+                    ) : (
+                      item.company
+                    )}
                   </p>
                 </div>
                 
