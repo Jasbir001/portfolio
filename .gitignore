@@ -18,6 +18,8 @@ pids
 # dotenv environment variables
 .env
 .env.*
+backend/.env
+frontend/.env
 
 # Next.js, Vite, and build output
 dist/
