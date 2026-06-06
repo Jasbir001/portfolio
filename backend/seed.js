@@ -19,16 +19,16 @@ const seedAdmin = async () => {
     // Create default admin
     const defaultAdmin = new Admin({
       username: 'admin',
-      email: 'admin@example.com',
-      password: 'adminpassword123' // This will be hashed by AdminSchema pre-save hook
+      email: 'jasbirverma441441@gmail.com',
+      password: 'Nexbyte1P1' // This will be hashed by AdminSchema pre-save hook
     });
 
     await defaultAdmin.save();
     console.log('\n==================================================');
     console.log('Admin User Seeded Successfully!');
     console.log('Username: admin');
-    console.log('Email: admin@example.com');
-    console.log('Password: adminpassword123');
+    console.log('Email: jasbirverma441441@gmail.com');
+    console.log('Password: Nexbyte1P1');
     console.log('==================================================\n');
     process.exit(0);
   } catch (error) {

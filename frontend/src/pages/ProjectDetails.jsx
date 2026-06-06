@@ -101,7 +101,7 @@ const ProjectDetails = () => {
               <img
                 src={project.screenshots[currentSlide]}
                 alt={`${project.title} screenshot ${currentSlide + 1}`}
-                className="w-full h-full object-cover transition-all duration-300"
+                className="w-full h-full object-contain transition-all duration-300"
                 onError={(e) => {
                   e.target.src = 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=700&auto=format&fit=crop&q=80';
                 }}
