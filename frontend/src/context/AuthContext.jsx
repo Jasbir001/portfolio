@@ -62,9 +62,12 @@ export const AuthProvider = ({ children }) => {
         return { success: true };
       }
     } catch (error) {
+      const message = error.response
+        ? (error.response.data?.message || 'Invalid username or password')
+        : 'Cannot connect to backend server. Please check if your backend server is running on port 5000.';
       return {
         success: false,
-        message: error.response?.data?.message || 'Invalid username or password'
+        message
       };
     }
   };

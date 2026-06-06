@@ -92,7 +92,7 @@ const Contact = () => {
               </div>
               <div>
                 <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Email Address</h4>
-                <p className="text-sm font-medium text-slate-800 dark:text-slate-200">developer@example.com</p>
+                <p className="text-sm font-medium text-slate-800 dark:text-slate-200">jasbir.nexbyte@gmail.com</p>
               </div>
             </div>
 
@@ -103,7 +103,7 @@ const Contact = () => {
               </div>
               <div>
                 <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Phone number</h4>
-                <p className="text-sm font-medium text-slate-800 dark:text-slate-200">+91 98765 43210</p>
+                <p className="text-sm font-medium text-slate-800 dark:text-slate-200">+91 74949 96995</p>
               </div>
             </div>
 
@@ -114,7 +114,7 @@ const Contact = () => {
               </div>
               <div>
                 <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Office Location</h4>
-                <p className="text-sm font-medium text-slate-800 dark:text-slate-200">New Delhi, India</p>
+                <p className="text-sm font-medium text-slate-800 dark:text-slate-200">📍Chandigarh, India</p>
               </div>
             </div>
           </div>
@@ -158,7 +158,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    placeholder="John Doe"
+                    placeholder="Rohan Sharma"
                     className="w-full px-4 py-2.5 rounded-lg border border-slate-200 dark:border-darkBorder bg-slate-50 dark:bg-darkCard text-sm text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-primary-500 focus:bg-white dark:focus:bg-darkCard transition-all duration-300"
                   />
                 </div>
@@ -175,7 +175,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    placeholder="john@example.com"
+                    placeholder="rohan@example.com"
                     className="w-full px-4 py-2.5 rounded-lg border border-slate-200 dark:border-darkBorder bg-slate-50 dark:bg-darkCard text-sm text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-primary-500 focus:bg-white dark:focus:bg-darkCard transition-all duration-300"
                   />
                 </div>

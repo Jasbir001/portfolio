@@ -76,10 +76,10 @@ const HireMe = () => {
 
   const projectTypes = [
     'Web Application',
-    'SaaS Dashboard',
-    'Mobile Application API',
-    'Database Architecture',
     'E-commerce Platform',
+    'Mobile Application',
+    'Booking System',
+    'Personal Dashboard',
     'Other'
   ];
 
@@ -146,7 +146,7 @@ const HireMe = () => {
                   value={formData.fullName}
                   onChange={handleChange}
                   required
-                  placeholder="John Doe"
+                  placeholder="Dr. Jasbir"
                   className="w-full px-4 py-2.5 rounded-lg border border-slate-200 dark:border-darkBorder bg-slate-50 dark:bg-darkCard text-sm text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-primary-500 focus:bg-white dark:focus:bg-darkCard transition-all duration-300"
                 />
               </div>
@@ -163,7 +163,7 @@ const HireMe = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  placeholder="john@example.com"
+                  placeholder="jasbir@example.com"
                   className="w-full px-4 py-2.5 rounded-lg border border-slate-200 dark:border-darkBorder bg-slate-50 dark:bg-darkCard text-sm text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-primary-500 focus:bg-white dark:focus:bg-darkCard transition-all duration-300"
                 />
               </div>
@@ -180,7 +180,7 @@ const HireMe = () => {
                 name="companyName"
                 value={formData.companyName}
                 onChange={handleChange}
-                placeholder="Acme Corp"
+                placeholder="NextGen Solutions"
                 className="w-full px-4 py-2.5 rounded-lg border border-slate-200 dark:border-darkBorder bg-slate-50 dark:bg-darkCard text-sm text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-primary-500 focus:bg-white dark:focus:bg-darkCard transition-all duration-300"
               />
             </div>
@@ -204,7 +204,7 @@ const HireMe = () => {
                 value={formData.projectTitle}
                 onChange={handleChange}
                 required
-                placeholder="E.g. E-Commerce API integration or SaaS Telemetry Panel"
+                placeholder="E.g. E-Commerce Web Application E-commerce Platform Mobile Application Personal Dashboard"
                 className="w-full px-4 py-2.5 rounded-lg border border-slate-200 dark:border-darkBorder bg-slate-50 dark:bg-darkCard text-sm text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-primary-500 focus:bg-white dark:focus:bg-darkCard transition-all duration-300"
               />
             </div>
