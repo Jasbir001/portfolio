@@ -1,81 +1,64 @@
 export const projects = [
   {
-    id: 'devflow',
-    title: 'DevFlow - Collaborative Document Hub',
-    category: 'MERN Stack',
-    thumbnail: '/assets/project_devflow.png',
-    screenshots: [
-      '/assets/project_devflow.png',
-      '/assets/project_devflow_editor.png',
-      '/assets/project_devflow_settings.png'
-    ],
-    videoDemo: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Placeholder URL for standard layout rendering
-    shortDescription: 'A real-time collaborative Markdown editing platform featuring conflict-free sync, inline commenting, and folder structures.',
-    fullDescription: 'DevFlow is a developer-centric workspace designed to solve document collaboration challenges in distributed teams. It leverages WebSockets for instantaneous synchronizations and CRDTs (Conflict-Free Replicated Data Types) to prevent editing collision. Users can write standard Markdown and view a beautifully styled compiled live preview side-by-side. Additionally, the platform supports real-time workspace chat, granular project folders, and one-click PDF/HTML exporting.',
-    features: [
-      'Conflict-free multi-user text editing using Yjs CRDTs.',
-      'Active session indicators with custom user presence cursors.',
-      'Comprehensive version control history with rollback capacity.',
-      'Integrated markdown compiler featuring KaTeX equations and Mermaid diagrams.',
-      'Secure project spaces with invitation link sharing.'
-    ],
-    techStack: ['React.js', 'Tailwind CSS', 'Node.js', 'Express.js', 'MongoDB', 'Socket.io', 'Yjs', 'Redis'],
-    challenges: 'Handling synchronized edits across highly unstable network connections was the main bottleneck. Standard REST APIs felt laggy and caused severe race conditions when multiple users edited concurrently.',
-    learningOutcomes: 'Mastered the application of operational transformation and Conflict-Free Replicated Data Types (CRDTs). Learned how to configure Redis adapter to scale Socket.io across multiple clusters for load balancing.',
-    useCase: 'Remote software development teams who require simultaneous doc review, API drafting, and repository README structuring without opening heavy office suites.',
-    architecture: 'A classic client-server model extended with a WebSocket gateway layer. The React frontend maintains a local Yjs document model, synced via a Socket.io server which stores session data in MongoDB and caches hot delta states in Redis.'
-  },
-  {
-    id: 'saas-analytics',
-    title: 'Pulse - SaaS Growth & Revenue Dashboard',
+    id: 'event-management',
+    title: 'EventXpress - Event Management & Booking System',
     category: 'Full Stack',
-    thumbnail: '/assets/project_saas.png',
+    thumbnail: '/assets/Project1_img1.png',
     screenshots: [
-      '/assets/project_saas.png',
-      '/assets/project_saas_metrics.png',
-      '/assets/project_saas_billing.png'
+      '/assets/Project1_img1.png',
+      '/assets/Project1_img2.png',
+      '/assets/Project1_img3.png'
     ],
     videoDemo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-    shortDescription: 'An enterprise SaaS analytics dashboard aggregating Stripe webhooks, user usage tracking, and multi-tenant billing models.',
-    fullDescription: 'Pulse allows SaaS owners to view, analyze, and forecast key subscription metrics such as MRR (Monthly Recurring Revenue), LTV (Lifetime Value), Churn Rate, and Active Users. The application listens to incoming Stripe events, parses billing logs, and maps them directly to MongoDB collections. A fast caching layer ensures dashboard load speeds remain sub-100ms. It features comprehensive filtering by billing plans, subscription status, and customizable date ranges.',
+    githubUrl: 'https://github.com/Jasbir001/event-management-system',
+    liveUrl: 'https://event-management-system-mauve-eta.vercel.app/',
+    shortDescription: 'A robust full-stack event registration and booking platform featuring role-based dashboards, admin approval workflows, and automated transactional emails.',
+    fullDescription: 'EventSphere is a comprehensive event booking and management system built using the PERN stack (PostgreSQL, Express, React, Node). The platform allows community organizers to list events, track registrations, and manage logistics while enabling users to discover upcoming events and book tickets. It features a strict administrative moderation queue, where submissions are audited before appearing publicly. In addition, it connects with the Brevo API to send transactional confirmation receipts and trigger automatic payment reminder notifications.',
     features: [
-      'Real-time MRR, ARR, and LTV telemetry charting.',
-      'Robust Webhook ingestion pipeline verifying Stripe signatures.',
-      'Granular cohort analysis mapping user churn over 30-day buckets.',
-      'Interactive metrics filtering with support for CSV / PDF exports.',
-      'Multi-tenant role-based access control (Admin, billing editor, viewer).'
+      'Interactive User Event Discovery and Booking Pipeline.',
+      'Role-based access control (RBAC) separating Admins, Organizers, and Attendees.',
+      'Admin moderation dashboard featuring quick Event Approval & Rejection workflows.',
+      'Automated transactional emails for booking confirmations via Brevo Email API.',
+      'Triggerable payment reminder alerts sent directly from the admin panel.',
+      'Normalized relational PostgreSQL database schema with strict constraints to prevent duplicate bookings.',
+      'Responsive, modern administration panel designed with Tailwind CSS.'
     ],
-    techStack: ['React.js', 'Vite', 'Tailwind CSS', 'Framer Motion', 'Node.js', 'Express.js', 'MongoDB', 'Chart.js', 'Stripe API'],
-    challenges: 'Processing thousands of Stripe webhooks out-of-order during peak activity hours risked database inconsistency, especially in subscription status mapping.',
-    learningOutcomes: 'Developed an idempotent webhook handler to protect against duplicate transactions. Gained deep familiarity with Chart.js canvas render tuning for dynamic light/dark theme charts.',
-    useCase: 'Early-stage bootstrapped SaaS startups seeking a self-hosted analytics hub without paying premium third-party platform prices.',
-    architecture: 'The API server acts as an ingestion gate, writing incoming billing records to MongoDB after signature validation. A daily cron job runs aggregation pipelines to pre-calculate charting statistics, which are served via React components with sub-second responsive updates.'
+    techStack: ['React.js', 'Node.js', 'Express.js', 'PostgreSQL', 'Brevo API', 'JWT Authentication', 'Tailwind CSS', 'REST APIs'],
+    challenges: 'Designing a normalized relational schema in PostgreSQL to handle many-to-many relationships (users, events, and bookings) while ensuring referential integrity and preventing duplicate registrations. We also had to build a robust status-tracking system for asynchronous transactional emails (confirmations and reminders) utilizing the external Brevo API.',
+    learningOutcomes: 'Mastered SQL queries, schema normalization, and database migrations in PostgreSQL. Gained practical experience in implementing token-based authentication (JWT) and role-based route protection. Learned how to integrate third-party transactional mailers (Brevo API) with backend event triggers.',
+    useCase: 'Colleges, organizers, and local communities that need a unified platform to host events, manage attendee registrations, and automate confirmation workflows.',
+    architecture: 'A client-server architecture using React on the frontend and Node/Express on the backend. Business logic and security gates query a PostgreSQL database for state management, while emails are dispatched asynchronously via the Brevo API layer.'
   },
   {
-    id: 'db-engine-dashboard',
-    title: 'Titan - High-Performance Cache Monitor',
-    category: 'Backend Heavy',
-    thumbnail: '/assets/project_db.png',
+    id: 'nexcart',
+    title: 'NexCart - Modern E-Commerce Platform',
+    category: 'Full Stack',
+    thumbnail: '/assets/Project2_img1.png',
     screenshots: [
-      '/assets/project_db.png',
-      '/assets/project_db_logs.png',
-      '/assets/project_db_config.png'
+      '/assets/Project2_img1.png',
+      '/assets/Project2_img2.png',
+      '/assets/Project2_img3.png',
+      '/assets/Project2_img4.png'
     ],
     videoDemo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-    shortDescription: 'A specialized dashboard to monitor custom Key-Value cache metrics, throughput, evicted logs, and memory allocation maps.',
-    fullDescription: 'Titan Cache Monitor connects directly to local cache deployments and exposes real-time performance telemetry. Written to visualize cache miss/hit ratios, memory fragmentation, and operations per second (OPS), the app acts as a dashboard overlay. It displays system warnings, handles dynamic configuration updates (max memory changes, eviction policy tweaks), and formats eviction dump tables cleanly.',
+    githubUrl: 'https://github.com/Jasbir001/NexCart',
+    liveUrl: 'https://nex-cart-ochre.vercel.app/',
+    shortDescription: 'A high-performance full-stack e-commerce platform built with Next.js App Router, MongoDB, and Node.js, featuring active catalog filtering and cart management.',
+    fullDescription: 'NexCart is a high-performance full-stack e-commerce application designed to deliver a modern, responsive shopping experience. Leveraging Next.js App Router and Server-Side Rendering (SSR), the application connects to a MongoDB database to support real-time product browsing, category-based filtering, and shopping cart management. The project is under active development, with upcoming enhancements including secure admin product management dashboards, order tracking, inventory audits, and transactional email workflows.',
     features: [
-      'Real-time throughput metrics (OPS) using WebSocket relays.',
-      'Interactive memory heap allocation tree-map.',
-      'Live Eviction policy settings switcher (LRU, LFU, FIFO).',
-      'Unified searchable error and performance log screen.',
-      'Custom Slack and Email webhook alerts configurer.'
+      'Fast and responsive product browsing using Next.js Server-Side Rendering (SSR).',
+      'Interactive shopping cart management and local state synchronization.',
+      'Dynamic product category filtering and catalog search.',
+      'Secure user authentication and token management.',
+      'Robust database schema designed with Mongoose for products, carts, and users.',
+      'Fully responsive UI layout customized using Tailwind CSS.'
     ],
-    techStack: ['React.js', 'Tailwind CSS', 'Node.js', 'Express.js', 'MongoDB', 'WebSockets', 'ChartJS', 'PostgreSQL'],
-    challenges: 'Aggregating large streams of high-frequency CPU and memory metrics without slowing down the cache execution path or lagging the client UI.',
-    learningOutcomes: 'Implemented data throttling on the server side to buffer and package performance updates into 500ms batches. Learned to write lightweight DOM updates with React Virtualized.',
-    useCase: 'Systems developers and backend DevOps specialists seeking a visual admin panel to test and configure in-memory databases.',
-    architecture: 'A low-impact daemon agent runs alongside the cache engine, feeding metrics to a Node server. The Node server stores long-term analytics logs in MongoDB and streams active metrics to the React frontend using pure WebSockets.'
-  }
+    techStack: ['Next.js', 'React.js', 'MongoDB', 'Mongoose', 'Node.js', 'Tailwind CSS', 'JWT Authentication', 'REST APIs'],
+    challenges: 'Structuring a scalable architecture using the Next.js App Router and balancing Server-Side Rendering (SSR) with Client-side state hydration for the shopping cart. We also had to plan a secure relational schema in MongoDB for products, carts, and user sessions while designing the future role-based admin panel logic.',
+    learningOutcomes: 'Deepened understanding of Next.js App Router architecture and server actions. Gained experience in designing complex schemas with Mongoose and managing server-client state hydration. Learned best practices for designing role-based admin dashboard workflows.',
+    useCase: 'Online retailers and small businesses that require a scalable, modern e-commerce solution to manage catalogs, customer checkouts, inventory, and analytics.',
+    architecture: 'A modern hybrid architecture using Next.js. The frontend utilizes React with server-side rendering for catalog visibility and client-side React hooks for active shopping cart interactions. The backend interacts with a MongoDB cluster via Mongoose for persistent data storage.'
+  },
+ 
 ];
 export const categories = ['All', 'MERN Stack', 'Full Stack', 'Backend Heavy'];

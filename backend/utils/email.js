@@ -23,6 +23,20 @@ const createTransporter = async () => {
     };
   }
 
+  // Use gmail service shortcut for better reliability with Google SMTP
+  if (host.includes('gmail.com')) {
+    return nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user,
+        pass
+      },
+      tls: {
+        rejectUnauthorized: false
+      }
+    });
+  }
+
   return nodemailer.createTransport({
     host,
     port: parseInt(port) || 587,
@@ -30,6 +44,9 @@ const createTransporter = async () => {
     auth: {
       user,
       pass
+    },
+    tls: {
+      rejectUnauthorized: false // Bypass SSL verification errors on local development
     }
   });
 };
@@ -39,7 +56,7 @@ const sendEmail = async ({ to, subject, html, text }) => {
   try {
     const transporter = await createTransporter();
     const info = await transporter.sendMail({
-      from: `"MERN Portfolio System" <${process.env.ADMIN_EMAIL || 'portfolio@example.com'}>`,
+      from: `"Nexbyte" <${process.env.ADMIN_EMAIL || 'portfolio@example.com'}>`,
       to,
       subject,
       html,
@@ -70,7 +87,7 @@ const getClientConfirmationTemplate = (clientName, projectTitle) => {
       <p>If you need to make any immediate adjustments, feel free to reply directly to this email.</p>
       <div style="margin-top: 30px; padding-top: 15px; border-top: 1px solid #f3f4f6; font-size: 0.85em; color: #718096; text-align: center;">
         <p>Best Regards,</p>
-        <p><strong>MERN Stack Developer</strong><br>Portfolio Project Tracker</p>
+        <p><strong>Jasbir</strong><br>Full Stack Developer</p>
       </div>
     </div>
   `;
@@ -165,7 +182,7 @@ const getClientUpdateTemplate = (request, statusChanged, newNote, noteAuthor = '
 
       <div style="margin-top: 30px; padding-top: 15px; border-top: 1px solid #f3f4f6; font-size: 0.85em; color: #718096; text-align: center;">
         <p>Best Regards,</p>
-        <p><strong>MERN Stack Developer</strong><br>Portfolio Project Tracker</p>
+        <p><strong>Jasbir</strong><br>Full Stack Developer</p>
       </div>
     </div>
   `;
@@ -218,7 +235,7 @@ const getContactClientTemplate = (name, subject) => {
       
       <div style="margin-top: 30px; padding-top: 15px; border-top: 1px solid #f3f4f6; font-size: 0.85em; color: #718096; text-align: center;">
         <p>Best Regards,</p>
-        <p><strong>MERN Stack Developer</strong><br>Personal Portfolio</p>
+        <p><strong>Jasbir</strong><br>Full Stack Developer</p>
       </div>
     </div>
   `;

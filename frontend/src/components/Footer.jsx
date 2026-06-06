@@ -18,7 +18,7 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a 
-                href="https://github.com" 
+            href="https://github.com/Jasbir001"
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="text-slate-400 hover:text-white transition-colors"
@@ -27,7 +27,7 @@ const Footer = () => {
                 <FaGithub className="w-5 h-5" />
               </a>
               <a 
-                href="https://linkedin.com" 
+                href="https://www.linkedin.com/in/jasbir-verma" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="text-slate-400 hover:text-white transition-colors"
@@ -36,7 +36,7 @@ const Footer = () => {
                 <FaLinkedin className="w-5 h-5" />
               </a>
               <a 
-                href="mailto:developer@example.com" 
+                href="mailto:jasbir.nexbyte@gmail.com" 
                 className="text-slate-400 hover:text-white transition-colors"
                 aria-label="Email Address"
               >

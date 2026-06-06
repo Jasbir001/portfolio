@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Mail, ArrowRight, FileText } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import profileAvatar from '../assets/profile_avatar.jpeg';
 
 const Home = () => {
   const titles = [
@@ -87,8 +88,9 @@ const Home = () => {
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <a
-                href="/resume.pdf"
-                download
+                href="https://drive.google.com/uc?export=download&id=1-u2Rcm1DzczLHKqlDDXoWw_Wpc3QYVdr"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="border border-slate-300 dark:border-darkBorder bg-white/50 dark:bg-darkCard/50 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-darkCard px-6 py-3 rounded-lg font-semibold flex items-center space-x-2 transition-colors duration-300"
               >
                 <FileText className="w-4 h-4" />
@@ -103,7 +105,7 @@ const Home = () => {
               </span>
               <div className="flex space-x-4">
                 <a
-                  href="https://github.com"
+                  href="https://github.com/Jasbir001"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 rounded-full bg-slate-100 dark:bg-darkCard text-slate-600 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
@@ -112,7 +114,7 @@ const Home = () => {
                   <FaGithub className="w-5 h-5" />
                 </a>
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/jasbir-verma"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 rounded-full bg-slate-100 dark:bg-darkCard text-slate-600 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
@@ -121,7 +123,7 @@ const Home = () => {
                   <FaLinkedin className="w-5 h-5" />
                 </a>
                 <a
-                  href="mailto:developer@example.com"
+                  href="mailto:jasbir.nexbyte@gmail.com"
                   className="p-2 rounded-full bg-slate-100 dark:bg-darkCard text-slate-600 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                   aria-label="Send Email"
                 >
@@ -140,12 +142,12 @@ const Home = () => {
               {/* Inner card containing the avatar */}
               <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-white dark:border-darkBorder bg-slate-150 dark:bg-darkCard flex items-center justify-center">
                 <img
-                  src="/assets/profile_avatar.png"
+                  src={profileAvatar}
                   alt="MERN Developer Profile"
                   className="w-full h-full object-cover transform scale-105 hover:scale-100 transition-transform duration-700"
                   onError={(e) => {
-                    // Fail-safe if image loader breaks
-                    e.target.src = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80';
+                    e.target.onerror = null;
+                    e.target.src = 'https://via.placeholder.com/320?text=Profile+Image';
                   }}
                 />
               </div>

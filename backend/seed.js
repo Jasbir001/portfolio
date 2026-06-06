@@ -9,11 +9,11 @@ const seedAdmin = async () => {
     await mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/portfolio_db');
     console.log('Connected to DB for seeding...');
 
-    // Check if admin already exists
+    // Check if admin already exists and delete to overwrite/reset password
     const adminExists = await Admin.findOne({ username: 'admin' });
     if (adminExists) {
-      console.log('Admin user already exists. Skipping seeding.');
-      process.exit(0);
+      console.log('Admin user already exists. Resetting password...');
+      await Admin.deleteOne({ username: 'admin' });
     }
 
     // Create default admin

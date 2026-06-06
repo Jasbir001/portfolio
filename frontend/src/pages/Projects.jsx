@@ -90,7 +90,7 @@ const Projects = () => {
                 </Link>
                 
                 <a
-                  href="https://github.com"
+                  href={project.githubUrl || "https://github.com"}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2.5 rounded-lg border border-slate-200 dark:border-darkBorder text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-darkCard hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
