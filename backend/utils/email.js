@@ -3,7 +3,7 @@ const nodemailer = require('nodemailer');
 // Create transporter helper
 const createTransporter = async () => {
   const host = process.env.SMTP_HOST;
-  const port = process.env.SMTP_PORT;
+  const port = parseInt(process.env.SMTP_PORT) || 465;
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASS;
 
@@ -33,21 +33,27 @@ const createTransporter = async () => {
       },
       tls: {
         rejectUnauthorized: false
-      }
+      },
+      connectionTimeout: 5000, // 5 seconds connection timeout
+      greetingTimeout: 5000,   // 5 seconds greeting timeout
+      socketTimeout: 5000      // 5 seconds inactivity timeout
     });
   }
 
   return nodemailer.createTransport({
     host,
-    port: parseInt(port) || 587,
-    secure: parseInt(port) === 465, // true for 465, false for other ports
+    port,
+    secure: port === 465, // true for 465, false for other ports
     auth: {
       user,
       pass
     },
     tls: {
       rejectUnauthorized: false // Bypass SSL verification errors on local development
-    }
+    },
+    connectionTimeout: 5000, // 5 seconds connection timeout
+    greetingTimeout: 5000,   // 5 seconds greeting timeout
+    socketTimeout: 5000      // 5 seconds inactivity timeout
   });
 };
 
