@@ -9,7 +9,6 @@ export const projects = [
       '/assets/Project1_img2.png',
       '/assets/Project1_img3.png'
     ],
-    videoDemo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     githubUrl: 'https://github.com/Jasbir001/event-management-system',
     liveUrl: 'https://event-management-system-mauve-eta.vercel.app/',
     shortDescription: 'A robust full-stack event registration and booking platform featuring role-based dashboards, admin approval workflows, and automated transactional emails.',
@@ -40,7 +39,6 @@ export const projects = [
       '/assets/Project2_img3.png',
       '/assets/Project2_img4.png'
     ],
-    videoDemo: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
     githubUrl: 'https://github.com/Jasbir001/NexCart',
     liveUrl: 'https://nex-cart-ochre.vercel.app/',
     shortDescription: 'A high-performance full-stack e-commerce platform built with Next.js App Router, MongoDB, and Node.js, featuring active catalog filtering and cart management.',

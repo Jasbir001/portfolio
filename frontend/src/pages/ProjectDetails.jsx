@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { projects } from '../data/projects';
 import { 
-  ArrowLeft, ExternalLink, Play, 
+  ArrowLeft, ExternalLink, 
   HelpCircle, Lightbulb, ChevronLeft, ChevronRight, Cpu, Sparkles
 } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa';
@@ -179,23 +179,7 @@ const ProjectDetails = () => {
             </p>
           </div>
 
-          {/* Video Demonstration Embedded */}
-          <div className="space-y-4">
-            <div className="flex items-center space-x-2 text-slate-800 dark:text-slate-200">
-              <Play className="w-5 h-5 text-rose-500" />
-              <h3 className="font-display font-semibold text-lg">
-                Video Walkthrough
-              </h3>
-            </div>
-            <div className="aspect-video w-full rounded-xl overflow-hidden border border-slate-200/50 dark:border-darkBorder/50">
-              <iframe
-                title={`${project.title} Video walkthrough`}
-                src={project.videoDemo}
-                className="w-full h-full"
-                allowFullScreen
-              />
-            </div>
-          </div>
+
 
         </div>
 
