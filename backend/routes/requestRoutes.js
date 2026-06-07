@@ -6,7 +6,9 @@ const {
   getRequestById,
   updateRequestStatus,
   addRequestNote,
-  submitContactForm
+  submitContactForm,
+  getContactMessages,
+  deleteContactMessage
 } = require('../controllers/requestController');
 const { protect } = require('../middleware/auth');
 
@@ -16,6 +18,8 @@ router.post('/contact', submitContactForm);
 
 // Protected Admin-only routes
 router.get('/', protect, getRequests);
+router.get('/messages', protect, getContactMessages);
+router.delete('/messages/:id', protect, deleteContactMessage);
 router.get('/:id', protect, getRequestById);
 router.patch('/:id/status', protect, updateRequestStatus);
 router.post('/:id/notes', protect, addRequestNote);

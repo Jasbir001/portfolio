@@ -1,4 +1,5 @@
 const ProjectRequest = require('../models/ProjectRequest');
+const ContactMessage = require('../models/ContactMessage');
 const {
   sendEmail,
   getClientConfirmationTemplate,
@@ -269,6 +270,9 @@ const submitContactForm = async (req, res, next) => {
       throw new Error('Please fill in all fields');
     }
 
+    // Save contact message to database first to prevent data loss
+    await ContactMessage.create({ name, email, subject, message });
+
     // Send email to admin (run in background)
     const adminHtml = getContactAdminTemplate(name, email, subject, message);
     sendEmail({
@@ -294,11 +298,51 @@ const submitContactForm = async (req, res, next) => {
   }
 };
 
+// @desc    Get all contact messages
+// @route   GET /api/requests/messages
+// @access  Private (Admin only)
+const getContactMessages = async (req, res, next) => {
+  try {
+    const messages = await ContactMessage.find({}).sort({ createdAt: -1 });
+    res.json({
+      success: true,
+      data: messages
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// @desc    Delete a contact message
+// @route   DELETE /api/requests/messages/:id
+// @access  Private (Admin only)
+const deleteContactMessage = async (req, res, next) => {
+  try {
+    const message = await ContactMessage.findById(req.params.id);
+
+    if (!message) {
+      res.status(404);
+      throw new Error('Contact message not found');
+    }
+
+    await message.deleteOne();
+
+    res.json({
+      success: true,
+      message: 'Contact message deleted successfully'
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   createRequest,
   getRequests,
   getRequestById,
   updateRequestStatus,
   addRequestNote,
-  submitContactForm
+  submitContactForm,
+  getContactMessages,
+  deleteContactMessage
 };

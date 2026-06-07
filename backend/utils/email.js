@@ -60,6 +60,44 @@ const createTransporter = async () => {
 // Send email helper
 const sendEmail = async ({ to, subject, html, text }) => {
   try {
+    // If Brevo API Key is configured, use the HTTP API (Port 443 - Unblockable)
+    if (process.env.BREVO_API_KEY) {
+      console.log('Sending email via Brevo HTTP API (Port 443)...');
+      const response = await fetch('https://api.brevo.com/v3/smtp/email', {
+        method: 'POST',
+        headers: {
+          'api-key': process.env.BREVO_API_KEY,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          sender: {
+            name: "Nexbyte",
+            email: process.env.ADMIN_EMAIL || "portfolio@example.com"
+          },
+          to: [
+            {
+              email: to
+            }
+          ],
+          subject: subject,
+          htmlContent: html,
+          textContent: text || 'This email contains HTML content. Please open it in an HTML-compatible client.'
+        })
+      });
+
+      if (!response.ok) {
+        const errData = await response.json();
+        throw new Error(`Brevo API returned status ${response.status}: ${JSON.stringify(errData)}`);
+      }
+
+      const info = await response.json();
+      console.log(`Email successfully sent via Brevo API: ${info.messageId}`);
+      return info;
+    }
+
+    // Otherwise, fallback to SMTP
+    console.log('Sending email via SMTP...');
     const transporter = await createTransporter();
     const info = await transporter.sendMail({
       from: `"Nexbyte" <${process.env.ADMIN_EMAIL || 'portfolio@example.com'}>`,
@@ -68,7 +106,7 @@ const sendEmail = async ({ to, subject, html, text }) => {
       html,
       text: text || 'This email contains HTML content. Please open it in an HTML-compatible client.'
     });
-    console.log(`Email successfully sent: ${info.messageId}`);
+    console.log(`Email successfully sent via SMTP: ${info.messageId}`);
     return info;
   } catch (error) {
     console.error(`Error sending email: ${error.message}`);
